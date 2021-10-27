@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 13px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(216, 216, 216, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+
+.noSelect {
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+body {
+  -webkit-app-region: drag;
+  margin: auto;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  background-size: cover;
+  flex-direction: row;
+  overflow: hidden;
+  cursor: default;
+  background-image: url('login.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+header {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  width: 100%;
+  height: 2.5rem;
+  top: 0;
+}
+.close {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.4rem;
+  background: rgb(54, 54, 54, 0.3);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 1.5rem;
+  width: 2.15rem;
+  height: 2.15rem;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.5);
+}
+.close:hover {
+  border-radius: 10px;
+  width: 2.3rem;
+  height: 2.3rem;
+  top: calc(0.5rem - 0.075rem);
+  right: calc(0.4rem - 0.075rem);
+  background: rgba(255, 0, 0, 0.6);
+}
+.min {
+  position: fixed;
+  top: 0.5rem;
+  right: 3rem;
+  background: rgb(54, 54, 54, 0.3);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 2.15rem;
+  height: 2.15rem;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.5);
+}
+.min:hover {
+  border-radius: 10px;
+  width: 2.3rem;
+  height: 2.3rem;
+  top: calc(0.5rem - 0.075rem);
+  right: calc(3rem - 0.075rem);
+}
+
+
+.total {
+  background: transparent;
+  box-shadow: inset 0 0 7px 5px white;
+  padding: 0.25rem;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.appName {
+  position: absolute;
+  font-size: 3rem;
+  top: 15%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  border-bottom: 3px solid black;
+  border-top: 3px solid black;
+}
+.total > .registration {
+  background: rgb(70, 70, 70, 0.50);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  filter: none;
+  border-left: 2px solid rgba(0, 0, 0, 0.65);
+}
+
+.formEntry {
+  width: 75%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.formEntry > legend {
+  font-size: 3rem;
+  margin: auto;
+}
+.formInputs {
+  margin: auto;
+}
+
+.changeEntry {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180, 0.7) 0%, rgba(253,29,29, 0.7) 100%);
+  display: flex;
+  border-radius: 25px;
+}
+.changeEntry > button {
+  width: 10rem;
+  height: 3rem;
+  margin: auto;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background: transparent;
+  margin: 2px;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.changeEntry > .activeEntry {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
