@@ -95,3 +95,8 @@ app.on('activate', () => {
   }
 });
 
+
+// To be fixed, cannot open the login page
+ipc.on('userSignOut', () => {
+  mainWindow.close();
+});
