@@ -73,6 +73,7 @@ if (logBtn.classList.contains('activeEntry') == true) {
 submitBtnLog.addEventListener('click', (e) => {
     e.preventDefault();
     async function hash(message) {
+        // return message;
         const msgBuffer = new TextEncoder().encode(message);                    
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -116,20 +117,23 @@ submitBtnReg.addEventListener('click', (e) => {
     hash(hashMessage).then((result) => {
         hash(hashMessage2).then((result1) => {
             if (result === result1) {                   
-                const regUsername = document.getElementById('regUsername');
-                const regEmail = document.getElementById('regEmail');
-                const regPassword = document.getElementById('regPassword');
-                const regConPassword = document.getElementById('regConPassword');
-                console.log(regEmail.value);
+            const regUsername = document.getElementById('regUsername');
+            const regEmail = document.getElementById('regEmail');
+            const regPassword = document.getElementById('regPassword');
+            const regConPassword = document.getElementById('regConPassword');
+            console.log(regUsername.value);
+            let regU = regUsername.value;
+            let regE = regEmail.value;
+            let regP = regPassword.value;
 
-                var $queryString = 'SELECT * FROM `users` WHERE EXISTS (SELECT * FROM `users` WHERE `user_email` = "' + regEmail.value + '")';
-            
-                connection.query($queryString, (err, rows, fields) => { 
-                    if (err) {
-                        console.log('An error has occured with the query', err);
-                    }
-                    console.log(regUsername.value);
-                    var $queryString = 'INSERT INTO `users`(`user_name`, `user_email`, `user_password`) VALUES ("' + regUsername.value + '", "' + regEmail.value + '", "' + regPassword.value + '");'
+            var $queryString = 'SELECT * FROM `users` WHERE EXISTS (SELECT * FROM `users` WHERE `user_email` = "' + regE + '")';
+        
+            connection.query($queryString, (err, rows, fields) => { 
+                if (err) {
+                    console.log('An error has occured with the query', err);
+                }
+                hash(regP).then((result) => {
+                    var $queryString = 'INSERT INTO `users`(`user_name`, `user_email`, `user_password`) VALUES ("' + regU + '", "' + regE + '", "' + result + '");'
                     connection.query($queryString, (err, rows) => {
                         if (err) {
                             console.log('An error has occured with the query', err)
@@ -137,17 +141,17 @@ submitBtnReg.addEventListener('click', (e) => {
                         console.log('Success');
                     });
                 });
+            });
 
+            logBtn.classList.add('activeEntry');
+            registerBtn.classList.remove('activeEntry');
+            formEntryLog.style.left = 50 + '%';
+            formEntryReg.style.left = 150 + '%';
 
-                logBtn.classList.add('activeEntry');
-                registerBtn.classList.remove('activeEntry');
-                formEntryLog.style.left = 50 + '%';
-                formEntryReg.style.left = 150 + '%';
-
-                regUsername.value = '';
-                regEmail.value = '';
-                regPassword.value = '';
-                regConPassword.value = '';
+            regUsername.value = '';
+            regEmail.value = '';
+            regPassword.value = '';
+            regConPassword.value = '';
 
             } else {
                 console.log('Not correct Matching');
