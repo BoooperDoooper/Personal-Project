@@ -21,27 +21,58 @@
                 <button class="activeEntry logBtn">Log In</button>
                 <button class="registerBtn">Register</button>
             </div>
-            <form class="form">
-                <fieldset class="formEntry">
-                    <legend class="legend">Log In</legend>
-                    <div class="formInputs">
-                        <label for="logEmail">Email or Username</label>
-                        <input type="text" id="" name="logEmail">
-                    </div>
-                    <div class="formInputs">
-                        <label for="logPassword">Password</label>
-                        <input type="text" id="" name="logPassword">
-                    </div>
-                    <div class="submitEntry">
-                        <button class="submitLog">
-                            Log In
-                        </button>
-                        <div class="helpEntry">
-                            <u>Forgot Password</u>
+            <div class="form log">
+                <form>
+                    <fieldset class="formEntryLog">
+                        <legend class="legend">Log In</legend>
+                        <div class="formInputs">
+                            <input type="text" id="logEmail" name="logEmail" maxlength="25" required>
+                            <label for="logEmail">Email or Username</label>
                         </div>
-                    </div>
-                </fieldset>
-            </form>
+                        <div class="formInputs">
+                            <input type="password" id="logPassword" name="logPassword" required>
+                            <label for="logPassword">Password</label>
+                        </div>
+                        <div class="submitEntry">
+                            <button class="submitLog">
+                                Log In
+                            </button>
+                            <div class="helpEntry">
+                                <u>Forgot Password</u>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <form>
+                    <fieldset class="formEntryReg">
+                        <legend class="legend">Register</legend>
+                        <div class="formInputs">
+                            <input type="text" id="regUsername" name="regUsername" maxlength="12" required>
+                            <label for="regUsername">Username</label>
+                        </div>
+                        <div class="formInputs">
+                            <input type="text" id="regEmail" name="regEmail" maxlength="25" required>
+                            <label for="regEmail">Email</label>
+                        </div>
+                        <div class="formInputs">
+                            <input type="password" id="regPassword" name="regPassword" class="regPassword" required>
+                            <label for="regPassword">Password</label>
+                        </div>
+                        <div class="formInputs">
+                            <input type="password" id="regConPassword" name="regConPassword" class="regConPassword" required>
+                            <label for="regConPassword">Confirm Password</label>
+                        </div>
+                        <div class="submitEntry">
+                            <button class="submitReg">
+                                Register
+                            </button>
+                            <div class="helpEntry">
+                                <u>Forgot Password</u>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>    
 </body>

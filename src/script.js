@@ -35,7 +35,7 @@ function loadFile(event) {
 
 
 const passList = document.querySelector('.passList');
-const button = document.getElementById('button');
+const favPassAdd = document.getElementById('favPassAdd');
 const sortBtn = document.querySelector('.sortBtn');
 const sortAllBtn = document.querySelector('.sortAllBtn');
 const addToFavorite = document.getElementById('addToFavorite');
@@ -85,9 +85,7 @@ sortAllBtn.addEventListener('click', () => {
 
 
 
-button.addEventListener('click', () => { 
-    document.querySelector('.inputTitle').focus();
-});
+
 
 const form = document.querySelector('form');
 form.addEventListener('submit', () => {
@@ -126,8 +124,11 @@ form.addEventListener('submit', () => {
                     `;
                     fav.appendChild(newPass);
                     all.appendChild(tempPass);
+                    fav.onclick(console.log('hello bob'));
+                    all.onclick(console.log('hello bob'));
                 } else {
                     all.appendChild(newPass);
+                    all.onclick(console.log('hello bob'));
                 }
                 if (addToFavorite.classList.contains('fas')) {
                     addToFavorite.classList.toggle('far');
@@ -151,7 +152,7 @@ const all = document.getElementById('allList');
 
 
 function unmatchingPass() {
-    if (1 ==1) {
+    if (1 == 1) {
         let notMatching = document.createElement('div');
         notMatching.classList.add('unMatching');
         notMatching.innerHTML = "Passwords aren't matching!";
@@ -171,17 +172,20 @@ function unmatchingPass() {
 const tabLook = document.querySelector('.tabLook');
 const mainSection = document.querySelector('.mainSection');
 const userBlock = document.querySelector('.userBlock');
-
+const signOut = document.getElementById('signOut');
 
 tabLook.addEventListener('click', () => {
     userBlock.classList.toggle('userSlide');
 });
 
+signOut.addEventListener('click', () => {
+    ipcRenderer.send('userSignOut');
+});
 
 const proInfo = document.getElementById('proInfo');
 
 proInfo.addEventListener('click', () => {
-    ipcRenderer.send('openProInfo')
+    ipcRenderer.send('openProInfo');
 }) ;
     
 
@@ -194,14 +198,9 @@ proInfo.addEventListener('click', () => {
 
 // User profile script
 
+// const h1 = document.querySelector('.hh1');
 
 
+// let userName = 'Guillaume Latreille'
 
-
-
-const h1 = document.querySelector('.hh1');
-
-
-let userName = 'Guillaume Latreille'
-
-h1.innerHTML = `${userName}`;
+// h1.innerHTML = `${userName}`;

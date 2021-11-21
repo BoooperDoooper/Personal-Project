@@ -1,5 +1,5 @@
 :root {
-  --main-bg-color: rgb(12, 0, 105);
+  --main-bg-color: white;
 }
 
 
@@ -46,7 +46,9 @@ body {
   font-family: "Poppins", sans-serif;
   background-image: url('https://medicainstitute.com/wp-content/uploads/2017/10/blue-gradient-background-6517.jpeg');
   display: flex;
-  background-color: var(--main-bg-color);
+  /* background-color: var(--main-bg-color); */
+  background-image: url('https://images.unsplash.com/photo-1636717068818-d54b63218adc?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNzQ1MzEzMw&ixlib=rb-1.2.1&q=80&w=1600');
+  background-size: cover;
   flex-direction: row;
   overflow: hidden;
 }
@@ -141,7 +143,6 @@ header {
 .favPassContainer {
   width: 97%;
   height: fit-content;
-  /* background: white; */
   margin: auto;
   margin-top: 0;
 }
@@ -171,21 +172,59 @@ header {
   cursor: pointer;
   transition: all .3s cubic-bezier(.44,-0.43,.41,1.57);
 }
-
-.favPassAdd {
-  height: 2.5rem;
-  width: 12%;
+.favPassCon {
   margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 3px solid black;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: bold;
+  padding: 0rem 0.5rem;
   cursor: pointer;
-  overflow: hidden;
+  position: relative;
+  right: 2rem;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
+.favPassAdd {
+  width: 6rem;
+  height: 3rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+.favPassAdd > i {
+  margin: 0.25rem;
+  padding: 0.25rem;
+}
+.dropDown {
+  position: absolute;
+  top: 1.75rem;
+  right: 0.5rem;
+  width: 10rem;
+  border-radius: 7px;
+  padding: 0.5rem;
+  display: none;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px 1px black;
+}
+.dropDown > li {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: none;
+  padding: 0.5rem;
+  text-align: center;
+}
+.dropDown > li:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+.favPassAdd:hover .dropDown,
+.dropDown:hover {
+  display: block;
+}
+
 
 .favPasses {
   display: flex;
@@ -350,14 +389,6 @@ li {
   flex-direction: column;
   flex-wrap: wrap;
 }
-.uploadFile {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  font-size: 0;
-  border-radius: 50%;
-  border: none;
-}
 ::-webkit-file-upload-button {
   cursor: pointer;
   width: 100%;
@@ -375,17 +406,7 @@ li {
   pointer-events: none;
 }
 
-.hehe {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  height: 6rem;
-  width: 6rem;
-  background: rgba(0, 0, 0, 0.144);
-}
-
-
-.uploadImageBox {
+.titleBox {
   height: 20%;
   width: 100%;
   display: flex;
@@ -399,15 +420,16 @@ li {
   right: 0.75rem;
   cursor: pointer;
 }
-.uploadImage {
+.addTitle {
   height: 7rem;
-  width: 7rem;
-  border: 2px solid black;
-  border-radius: 50%;
+  padding: 1rem;
+  border-bottom: 2px solid black;
   font-size: 2.5rem;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.2);
   margin: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 .tempDiv > div > input {
   position: absolute;
@@ -599,7 +621,7 @@ li {
 }
 
 .userSlide {
-  left: 55%;
+  left: 44%;
 }
 
 .userMain {

@@ -29,7 +29,7 @@ const loginWindow = () => {
   });
 
   
-  ipc.on('userHasLog', () => {
+  ipc.on('userGotIn', () => {
       const mainWindow = new BrowserWindow({
         minHeight: 950,
         minWidth: 1600,
@@ -48,7 +48,24 @@ const loginWindow = () => {
       
       // mainWindow.webContents.openDevTools();
       
-      
+      ipc.on('openProInfo', () => {
+  
+        const newWindow = new BrowserWindow({
+          width: 450,
+          height: 300,
+          resizable: false
+        })
+        
+        newWindow.loadFile(path.join(__dirname, '/user/profileInfo.html'));
+        
+        newWindow.removeMenu();
+      }); 
+
+      ipc.on('userSignOut', () => {
+        logingWindow();
+        mainWindow.close();
+      });
+
       ipc.on('closeApp', () => {
         mainWindow.close();
       });
@@ -59,6 +76,7 @@ const loginWindow = () => {
         mainWindow.minimize();
       });
       logingWin.close()
+
   });
 };
 
@@ -77,17 +95,3 @@ app.on('activate', () => {
   }
 });
 
-
-
-// ipc.on('openProInfo', () => {
-  
-//   const newWindow = new BrowserWindow({
-//     width: 450,
-//     height: 300,
-//     resizable: false
-//   })
-  
-//   newWindow.loadFile(path.join(__dirname, '/user/profileInfo.html'));
-  
-//   newWindow.removeMenu();
-// });
