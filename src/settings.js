@@ -62,7 +62,6 @@ const loginWindow = () => {
       }); 
 
       ipc.on('userSignOut', () => {
-        logingWindow();
         mainWindow.close();
       });
 
@@ -93,10 +92,4 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     loginWindow();
   }
-});
-
-
-// To be fixed, cannot open the login page
-ipc.on('userSignOut', () => {
-  mainWindow.close();
 });

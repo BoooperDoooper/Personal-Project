@@ -6,6 +6,13 @@ var connection = mysql.createConnection({
     password: "root",
     database: "personal project"
 });
+connection.connect((err) => {
+    if (err) {
+        return console.log(err.stack);
+    }
+
+    console.log('Connected Succesfully Established');
+});
 
 
 if (navigator.onLine != true) {
@@ -64,40 +71,33 @@ if (logBtn.classList.contains('activeEntry') == true) {
 }
 
 submitBtnLog.addEventListener('click', (e) => {
-    ipcRenderer.send('userGotIn');
     e.preventDefault();
-    hash(document.getElementById('logPassword').value);
     async function hash(message) {
         const msgBuffer = new TextEncoder().encode(message);                    
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const hashedPass = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-        return hashedPass = hashHex;
+        return hashedPass;
     }
-
-    connection.connect((err) => {
-        if (err) {
-            return console.log(err.stack);
-        }
-
-        console.log('Connected Succesfully Established');
+    hash(document.getElementById('logPassword').value).then((result) => {
+    
+        var $queryString = 'SELECT * FROM `users` WHERE `user_email` LIKE "' + document.getElementById('logEmail').value + '"';
+    
+        connection.query($queryString, (err, rows, fields) => {
+            if (err) {
+                console.log('An error has occured with the query', err);
+            }
+            console.log(result);
+            if (result == rows[0].user_password && document.getElementById('logEmail').value == rows[0].user_email) {
+                ipcRenderer.send('userGotIn');           
+                connection.end(() => {
+                    console.log('Connection Succesfully Closed');
+                })
+            };
+        });
+    
     });
-
-    var $queryString = 'SELECT * FROM `users` WHERE `user_email` LIKE "' + JSON.parse(localStorage.getItem('email')) +'";';
-
-    connection.query($queryString, (err, rows, fields) => {
-        if (err) {
-            console.log('An error has occured with the query', err);
-        }
-        if (hashedPass = rows[0].user_password) {
-            ipcRenderer.send('userGotIn');
-        };
-    });
-
-    connection.end(() => {
-        console.log('Connection Succesfully Closed');
-    })
 });
 submitBtnReg.addEventListener('click', (e) => {
     e.preventDefault();
@@ -120,17 +120,11 @@ submitBtnReg.addEventListener('click', (e) => {
                 const regEmail = document.getElementById('regEmail');
                 const regPassword = document.getElementById('regPassword');
                 const regConPassword = document.getElementById('regConPassword');
-                localStorage.setItem('email', JSON.stringify(regEmail.value));
+                console.log(regEmail.value);
 
-                connection.connect((err) => {
-                    if (err) {
-                        return console.log(err.stack);
-                    }
-                    console.log('Connected Succesfully Established');
-                });
                 var $queryString = 'SELECT * FROM `users` WHERE EXISTS (SELECT * FROM `users` WHERE `user_email` = "' + regEmail.value + '")';
             
-                connection.query($queryString, (err, rows, fields) => {    
+                connection.query($queryString, (err, rows, fields) => { 
                     if (err) {
                         console.log('An error has occured with the query', err);
                     }

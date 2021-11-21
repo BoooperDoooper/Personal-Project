@@ -44,6 +44,17 @@ const eyeDisplay = document.querySelector('.eyeDisplay');
 const eyeDisplayC = document.querySelector('.eyeDisplayC');
 
 
+// passList.forEach(pass, () => {
+//     console.log(pass.className);
+// });
+
+
+
+
+
+
+
+
 eyeDisplay.addEventListener('click', () => {
     let pass = document.querySelector('.pass');
     const type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -105,30 +116,32 @@ form.addEventListener('submit', () => {
     hash(hashMessage).then((result) => {
         hash(hashMessage2).then((result1) => {
             if (result === result1) {
-                let name = document.getElementById('inputName').value;
+                let yourName = document.getElementById('inputName').value;
                 
                 const fav = document.getElementById('favList');
                 const all = document.getElementById('allList');
+
                 let newPass = document.createElement('li');
                 newPass.innerHTML = `
-                <h5>${name}</h5>
+                <h5>${yourName}</h5>
                 <div class="expandPassLine"></div>
                 <div class="expandPass">Click to view</div>
                 `;
                 if (addToFavorite.classList.contains('fas')) {
                     let tempPass = document.createElement('li');
                     tempPass.innerHTML = `
-                    <h5>${name}</h5>
+                    <h5>${yourName}</h5>
                     <div class="expandPassLine"></div>
                     <div class="expandPass">Click to view</div>
                     `;
+                    newPass.classList.add(`${yourName}`);
+                    tempPass.classList.add(`${yourName}`);
                     fav.appendChild(newPass);
                     all.appendChild(tempPass);
-                    fav.onclick(console.log('hello bob'));
-                    all.onclick(console.log('hello bob'));
                 } else {
+                    newPass.classList.add(`${yourName}`);
+                    console.log(newPass.className);
                     all.appendChild(newPass);
-                    all.onclick(console.log('hello bob'));
                 }
                 if (addToFavorite.classList.contains('fas')) {
                     addToFavorite.classList.toggle('far');
@@ -187,9 +200,21 @@ const proInfo = document.getElementById('proInfo');
 proInfo.addEventListener('click', () => {
     ipcRenderer.send('openProInfo');
 }) ;
-    
 
+const addTitle = document.querySelector('.addTitle');
+const dropDownEl1 = document.querySelector('.dropDownEl1');    
+const dropDownEl2 = document.querySelector('.dropDownEl2');    
+const dropDownEl3 = document.querySelector('.dropDownEl3');    
 
+dropDownEl1.addEventListener('click', () => {
+    addTitle.innerHTML = dropDownEl1.innerHTML;
+});
+dropDownEl2.addEventListener('click', () => {
+    addTitle.innerHTML = dropDownEl2.innerHTML;
+});
+dropDownEl3.addEventListener('click', () => {
+    addTitle.innerHTML = dropDownEl3.innerHTML;
+});
 
 
 
