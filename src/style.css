@@ -50,6 +50,7 @@ body {
   background-image: url('https://images.unsplash.com/photo-1636717068818-d54b63218adc?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNzQ1MzEzMw&ixlib=rb-1.2.1&q=80&w=1600');
   background-size: cover;
   flex-direction: row;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -133,7 +134,7 @@ header {
 
 
 .passContainer {
-  height: 95%;
+  height: 94%;
   width: 93%;
   margin-right: 3rem;
   margin-left: 1rem;
@@ -183,15 +184,16 @@ header {
   transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
 .favPassAdd {
-  width: 6rem;
+  width: 7rem;
   height: 3rem;
   border: 3px solid black;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   background: rgba(0, 0, 0, 0.1);
 }
 .favPassAdd > i {
@@ -625,28 +627,37 @@ li {
 }
 
 .userMain {
-  margin-right: 0.75rem;
+  margin: auto;
   padding: 0.5rem;
-  height: 85%;
+  height: 100%;
   width: 575px;
   border-radius: 7px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
 }
 .userMainContent {
   padding: 0.5rem;
   height: 100%;
   margin: auto;
-  margin-left: 0.25rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: purple;
 }
 .generalItem {
   height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: yellow;
 }
-
+#signOut {
+  background: green;
+}
 .userMainBox {
   height: 15%;
   display: flex;
@@ -661,4 +672,17 @@ li {
 }
 .userMainBox:hover {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.profileCircle {
+  height: 7rem;
+  width: 7rem;
+  border: 3px solid black;
+  background: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
