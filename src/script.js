@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, BrowserWindowProxy } = require('electron');
 
 // Close app
 const minimizer = document.querySelector('.minimizer');
@@ -197,9 +197,9 @@ signOut.addEventListener('click', () => {
 
 const proInfo = document.getElementById('proInfo');
 
-proInfo.addEventListener('click', () => {
-    ipcRenderer.send('openProInfo');
-}) ;
+// proInfo.addEventListener('click', () => {
+//     ipcRenderer.send('openProInfo');
+// }) ;
 
 const addTitle = document.querySelector('.addTitle');
 const dropDownEl1 = document.querySelector('.dropDownEl1');    
@@ -218,14 +218,41 @@ dropDownEl3.addEventListener('click', () => {
 
 
 
+// const randomBg = document.querySelector('.randomBackground');
+// randomBg.addEventListener('click', () => {
+//     let rand = 'https://source.unsplash.com/random/1600x1000'
+//     document.querySelector('body').style.backgroundImage = "url('"+ rand +"')";
+// });
 
 
 
-// User profile script
-
-// const h1 = document.querySelector('.hh1');
 
 
-// let userName = 'Guillaume Latreille'
 
-// h1.innerHTML = `${userName}`;
+// const saveInfo = document.querySelector('.saveInfo');
+
+// saveInfo.addEventListener('click', () => {
+//     var connection = mysql.createConnection({
+//         host: "localhost",
+//         user: "root",
+//         password: "root",
+//         database: "personal project"
+//     });
+//     connection.connect((err) => {
+//         if (err) {
+//             return console.log(err.stack);
+//         }
+    
+//         console.log('Connected Succesfully Established');
+//     });
+    
+//     var $queryString = 'SELECT * FROM `users` WHERE `user_name` LIKE `Aiméric`';
+    
+//     connection.query($queryString, (err, rows, fields) => {
+//         if (err) {
+//             console.log('An error has occured with the query', err);
+//         }
+//         rows[0].user_name = document.querySelector('.accountName');
+//     });
+
+// });

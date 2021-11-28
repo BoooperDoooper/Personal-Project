@@ -1,5 +1,6 @@
 :root {
   --main-bg-color: white;
+  --main-font-color: black;
 }
 
 
@@ -47,7 +48,7 @@ body {
   background-image: url('https://medicainstitute.com/wp-content/uploads/2017/10/blue-gradient-background-6517.jpeg');
   display: flex;
   /* background-color: var(--main-bg-color); */
-  background-image: url('https://images.unsplash.com/photo-1636717068818-d54b63218adc?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNzQ1MzEzMw&ixlib=rb-1.2.1&q=80&w=1600');
+  background-image: url('https://images.unsplash.com/photo-1455787736774-78869f147628?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
   background-size: cover;
   flex-direction: row;
   height: 100vh;
@@ -592,7 +593,7 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(5.25rem - 3px);
+  height: calc(5.5rem + 3px);
   border-bottom: 3px solid black;
   display: flex;
   align-items: center;
@@ -635,7 +636,6 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blue;
 }
 .userMainContent {
   padding: 0.5rem;
@@ -645,18 +645,39 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: purple;
 }
 .generalItem {
   height: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  background: yellow;
+  justify-content: space-between;
 }
-#signOut {
-  background: green;
+.about {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  margin: .5rem;
+}
+.about2 {
+  height: 50%;
+  padding: 1rem;
+  width: 100%;
+}
+.about > div {
+  margin: 0.25rem;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background: black;
+}
+.accountEmail {
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 .userMainBox {
   height: 15%;
@@ -666,6 +687,18 @@ li {
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
+}
+.saveInfo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.saveInfo:hover {
+  transform: scale(1.1);
 }
 .userMainBox > i {
   margin-right: 0.75rem;
@@ -679,10 +712,22 @@ li {
   height: 7rem;
   width: 7rem;
   border: 3px solid black;
-  background: green;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.randomBackground {
+  height: 2rem;
+  font-size: 1.5rem;
+  outline: none;
+  border: 2px solid black;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.randomBackground:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
