@@ -1,4 +1,41 @@
 const { ipcRenderer, BrowserWindowProxy } = require('electron');
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "personal project"
+});
+connection.connect((err) => {
+    if (err) {
+        return console.log(err.stack);
+    }
+
+    console.log('Connected Succesfully Established');
+});
+
+let userEmail;
+let userName;
+
+function getInformation() {
+    var $queryString = 'SELECT * FROM `users` WHERE `user_email` LIKE "' + JSON.parse(localStorage.getItem('email')) + '"';
+    
+    connection.query($queryString, (err, rows, fields) => {
+        if (err) {
+            console.log('An error has occured with the query', err);
+        }
+        localStorage.clear();
+        console.log(rows[0])
+        userEmail = rows[0].user_email;
+        userName = rows[0].user_name;
+        connection.end(() => {
+            console.log('Connection Succesfully Closed');
+        });
+    });
+}
+getInformation();
+console.log(userName, 'and', userEmail)
+
 
 // Close app
 const minimizer = document.querySelector('.minimizer');
@@ -7,6 +44,9 @@ const closeApp = document.getElementById('close');
 const bringDown = document.getElementById('minimize');
 const smallerWindow = document.getElementById('smallerWindow');
 
+// ipcRenderer.on('profileInfo', function (userName, userEmail, userPass) {
+//     console.log(userName, userEmail, userPass);
+// });
 
 
 // if (navigator.onLine == true) {

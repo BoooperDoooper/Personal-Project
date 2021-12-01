@@ -91,6 +91,10 @@ submitBtnLog.addEventListener('click', (e) => {
             }
             console.log(result);
             if (result == rows[0].user_password && document.getElementById('logEmail').value == rows[0].user_email) {
+                
+                localStorage.setItem('email', JSON.stringify(rows[0].user_email))
+                
+                // ipcRenderer.send('userGotIn', (rows[0].user_name, rows[0].user_email, rows[0].user_password));           
                 ipcRenderer.send('userGotIn');           
                 connection.end(() => {
                     console.log('Connection Succesfully Closed');

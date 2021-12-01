@@ -39,6 +39,7 @@ const loginWindow = () => {
           nodeIntegration: true,
         }
       });
+      // mainWindow.webContents.send('profileInfo', userName, userEmail, userPass)
       mainWindow.maximize();
       // and load the index.html of the app or load any website
       mainWindow.loadFile(path.join(__dirname, 'index.html'));
