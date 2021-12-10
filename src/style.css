@@ -45,10 +45,10 @@ body {
   margin: auto;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background-image: url('https://medicainstitute.com/wp-content/uploads/2017/10/blue-gradient-background-6517.jpeg');
   display: flex;
   /* background-color: var(--main-bg-color); */
-  background-image: url('https://images.unsplash.com/photo-1455787736774-78869f147628?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');
+  /* background-image: url('https://images.unsplash.com/photo-1636470241984-9c54a8517cf3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzOTE1NDU0MA&ixlib=rb-1.2.1&q=80&w=1600'); */
+  background-color: white;
   background-size: cover;
   flex-direction: row;
   height: 100vh;
@@ -647,14 +647,12 @@ li {
   justify-content: space-between;
 }
 .generalItem {
-  height: 75%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 .about {
-  height: 50%;
+  width: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -671,7 +669,7 @@ li {
   margin: 0.25rem;
 }
 .line {
-  width: 100%;
+  width: 80%;
   height: 2px;
   background: black;
 }
@@ -707,6 +705,15 @@ li {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.profileCustomizer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.profileCustomizer > div {
+  margin: 0.75rem;
+}
 
 .profileCircle {
   height: 7rem;
@@ -719,15 +726,49 @@ li {
   font-size: 3rem;
 }
 
-.randomBackground {
+.changeThemes {
   height: 2rem;
   font-size: 1.5rem;
   outline: none;
-  border: 2px solid black;
   border-radius: 7px;
-  background: rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  cursor: default;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.randomBackground:hover {
-  background: rgba(0, 0, 0, 0.5);
+.changeThemes > div > input {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 1.25rem;
+}
+.changeThemes > div > input:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.changeFontColor {
+  height: 2rem;
+  font-size: 1.5rem;
+  outline: none;
+  border-radius: 7px;
+  cursor: default;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.changeFontColor > div > input {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+  font-size: 1.25rem;
+  width: 5rem;
+  height: 2rem;
+}
+.changeFontColor > div > input:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
