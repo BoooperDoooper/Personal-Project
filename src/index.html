@@ -29,13 +29,13 @@
                         <i class="fas fa-sort sortBtn"></i>
                     </div>
                     <div class="favPassCon">
-                        <div class="favPassAdd" id="favPassAdd">
+                        <div class="favPassAdd noSelect" id="favPassAdd">
                             <i class="fas fa-plus"></i>
                             <h4>Add</h4>
                             <ul class="dropDown">
-                                <li class='dropDownEl1'>Website</li>
-                                <li class='dropDownEl2'>Card Information</li>
-                                <li class='dropDownEl3'>Banking</li>
+                                <li class='dropDownEl1 noSelect'>Website</li>
+                                <li class='dropDownEl2 noSelect'>Card Information</li>
+                                <li class='dropDownEl3 noSelect'>Banking</li>
                             </ul>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <i class="fas fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="userHeader">
+                <div class="userHeader noSelect">
                     Settings
                 </div>
                 <div class="userMain">
@@ -81,12 +81,12 @@
                                 <div class="profileCircle">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <div class="accountName" contenteditable="true">[Name will be here]</div>
+                                <div class="accountName noSelect" contenteditable="true">[Name will be here]</div>
                                 <div class="line"></div>
-                                <div class="accountEmail" contenteditable="true">[Email will bedisplayed here]</div>
+                                <div class="accountEmail noSelect" contenteditable="true">[Email will be displayed here]</div>
                             </div>
                         </div>
-                        <div class="profileCustomizer">
+                        <div class="profileCustomizer noSelect">
                             <div class="changeThemes">Change theme
                                 <div>
                                     <input type="button" value="Light">
@@ -96,11 +96,11 @@
                             </div>
                             <div class="changeFontColor">Font Color
                                 <div>
-                                    <input type="color">
+                                    <input type="color" id="changeFontColor">
                                 </div>
                             </div>
                         </div>
-                        <div class="userMainBox" id="signOut">
+                        <div class="userMainBox noSelect" id="signOut">
                             <i class="fas fa-sign-out-alt"></i>
                             <p>Sign out</p>
                         </div>                        
@@ -111,7 +111,7 @@
     </div>
     <form onsubmit="return false" class="addSection">
         <div class="titleBox">
-            <div class="addTitle">
+            <div class="addTitle noSelect">
                 Website
             </div>
             <i class="far fa-star" id="addToFavorite"></i>
@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="addBox">
-            <button class="addButton" type="submit">
+            <button class="addButton noSelect" type="submit">
                 <i class="fas fa-plus"></i>
                 Add
             </button>

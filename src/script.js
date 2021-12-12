@@ -89,7 +89,12 @@ const eyeDisplayC = document.querySelector('.eyeDisplayC');
 // });
 
 
+const changeFontColor = document.getElementById('changeFontColor');
 
+changeFontColor.addEventListener('input', () => {
+    console.log('black is better', changeFontColor.value);
+    // write code to change the css variable --main-font-color to the inputed color.
+});
 
 
 
