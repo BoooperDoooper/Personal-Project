@@ -35,7 +35,6 @@
                             <ul class="dropDown">
                                 <li class='dropDownEl1 noSelect'>Website</li>
                                 <li class='dropDownEl2 noSelect'>Card Information</li>
-                                <li class='dropDownEl3 noSelect'>Banking</li>
                             </ul>
                         </div>
                     </div>
@@ -64,48 +63,8 @@
                     <div class="userProfile">
                         <i class="fas fa-user-alt"></i>
                     </div>
-                    <div class="bookMark">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
                 </div>
-                <div class="userHeader noSelect">
-                    Settings
-                </div>
-                <div class="userMain">
-                    <div class="userMainContent">
-                        <div class="saveInfo">
-                            <i class="far fa-save"></i>
-                        </div>
-                        <div class="generalItem">
-                            <div class="about">
-                                <div class="profileCircle">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="accountName noSelect" contenteditable="true">[Name will be here]</div>
-                                <div class="line"></div>
-                                <div class="accountEmail noSelect" contenteditable="true">[Email will be displayed here]</div>
-                            </div>
-                        </div>
-                        <div class="profileCustomizer noSelect">
-                            <div class="changeThemes">Change theme
-                                <div>
-                                    <input type="button" value="Light">
-                                    <input type="button" value="Dark">
-                                    <input type="button" value="Programmers">
-                                </div>
-                            </div>
-                            <div class="changeFontColor">Font Color
-                                <div>
-                                    <input type="color" id="changeFontColor">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="userMainBox noSelect" id="signOut">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Sign out</p>
-                        </div>                        
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -116,43 +75,46 @@
             </div>
             <i class="far fa-star" id="addToFavorite"></i>
         </div>
-        <div class="enterNameBox inputField">
+
+        <div class="enterNameBox inputField websiteForm">
             <div class="tempDiv">
                 <div>
-                    <input placeholder="Website Name*" class="inputTitle name" id="inputName" type="text" required>
+                    <input name="name" placeholder="Website Name*" class="inputTitle name" id="inputName" type="text" required>
                 </div>
             </div>
         </div>
-        <div class="enterUserBox inputField">
+        <div class="enterUserBox inputField websiteForm">
             <div class="tempDiv">
                 <div>
-                    <input placeholder="UserName" class="inputTitle user" type="text">
+                    <input name="user" placeholder="UserName" class="inputTitle user" type="text">
                 </div>
             </div>
         </div>
-        <div class="enterEmailBox inputField">
+        <div class="enterEmailBox inputField websiteForm">
             <div class="tempDiv">
                 <div>
-                    <input placeholder="Email" class="inputTitle email" type="email">
+                    <input name="email" placeholder="Email" class="inputTitle email" type="email">
                 </div>
             </div>
         </div>
-        <div class="enterPassBox inputField">
+        <div class="enterPassBox inputField websiteForm">
             <div class="tempDiv">
                 <i class="far fa-eye-slash eyeDisplay eye"></i>
                 <div>
-                    <input placeholder="Password*" class="inputTitle pass" type="password" required>
+                    <input name="pass" placeholder="Password*" class="inputTitle pass" type="password" required>
                 </div>
             </div>
         </div>
-        <div class="enterConfirmBox inputField">
+        <div class="enterConfirmBox inputField websiteForm">
             <div class="tempDiv notMatching">
                 <i class="far fa-eye-slash eyeDisplayC eye"></i>
                 <div>
-                    <input placeholder="Confirm Password*" class="inputTitle confirmPass" type="password" required>
+                    <input name="confirmPass" placeholder="Confirm Password*" class="inputTitle confirmPass" type="password" required>
                 </div>
             </div>
         </div>
+        
+        
         <div class="addBox">
             <button class="addButton noSelect" type="submit">
                 <i class="fas fa-plus"></i>
@@ -160,5 +122,45 @@
             </button>
         </div>
     </form>
-</body>
+</body>name="name" 
 </html>
+
+
+<!-- <div class="userHeader noSelect">
+    Settings
+</div>
+<div class="userMain">
+    <div class="userMainContent">
+        <div class="saveInfo">
+            <i class="far fa-save"></i>
+        </div>
+        <div class="generalItem">
+            <div class="about">
+                <div class="profileCircle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="accountName noSelect" contenteditable="true">[Name will be here]</div>
+                <div class="line"></div>
+                <div class="accountEmail noSelect" contenteditable="true">[Email will be displayed here]</div>
+            </div>
+        </div>
+        <div class="profileCustomizer noSelect">
+            <div class="changeThemes">Change theme
+                <div>
+                    <input type="button" value="Light">
+                    <input type="button" value="Dark">
+                    <input type="button" value="Programmers">
+                </div>
+            </div>
+            <div class="changeFontColor">Font Color
+                <div>
+                    <input type="color" id="changeFontColor">
+                </div>
+            </div>
+        </div>
+        <div class="userMainBox noSelect" id="signOut">
+            <i class="fas fa-sign-out-alt"></i>
+            <p>Sign out</p>
+        </div>                        
+    </div>
+</div> -->

@@ -17,23 +17,23 @@ connection.connect((err) => {
 let userEmail;
 let userName;
 
-function getInformation() {
-    var $queryString = 'SELECT * FROM `users` WHERE `user_email` LIKE "' + JSON.parse(localStorage.getItem('email')) + '"';
+// function getInformation() {
+//     var $queryString = 'SELECT * FROM `users` WHERE `user_email` LIKE "' + JSON.parse(localStorage.getItem('email')) + '"';
     
-    connection.query($queryString, (err, rows, fields) => {
-        if (err) {
-            console.log('An error has occured with the query', err);
-        }
-        localStorage.clear();
-        console.log(rows[0])
-        userEmail = rows[0].user_email;
-        userName = rows[0].user_name;
-        connection.end(() => {
-            console.log('Connection Succesfully Closed');
-        });
-    });
-}
-getInformation();
+//     connection.query($queryString, (err, rows, fields) => {
+//         if (err) {
+//             console.log('An error has occured with the query', err);
+//         }
+//         localStorage.clear();
+//         console.log(rows[0])
+//         // userEmail = rows[0].user_email;
+//         // userName = rows[0].user_name;
+//         connection.end(() => {
+//             console.log('Connection Succesfully Closed');
+//         });
+//     });
+// }
+// getInformation();
 console.log(userName, 'and', userEmail)
 
 
@@ -92,8 +92,9 @@ const eyeDisplayC = document.querySelector('.eyeDisplayC');
 const changeFontColor = document.getElementById('changeFontColor');
 
 changeFontColor.addEventListener('input', () => {
-    console.log('black is better', changeFontColor.value);
-    // write code to change the css variable --main-font-color to the inputed color.
+    // console.log('black is better', changeFontColor.value);
+    var rootVariable = document.querySelector(':root');
+    rootVariable.style.setProperty('--main-font-color', changeFontColor.value);
 });
 
 
@@ -147,82 +148,118 @@ const form = document.querySelector('form');
 form.addEventListener('submit', () => {
         
     async function hash(message) {
-        const msgBuffer = new TextEncoder().encode(message);                    
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-        return hashHex;
-    }
-    
-    let hashMessage = document.querySelector('.pass').value;
-    let hashMessage2 = document.querySelector('.confirmPass').value;
-
-    hash(hashMessage).then((result) => {
-        hash(hashMessage2).then((result1) => {
-            if (result === result1) {
-                let yourName = document.getElementById('inputName').value;
+                        const msgBuffer = new TextEncoder().encode(message);                    
+                        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+                        const hashArray = Array.from(new Uint8Array(hashBuffer));
+                        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
                 
-                const fav = document.getElementById('favList');
-                const all = document.getElementById('allList');
+                        return hashHex;
+                    }
+    if (document.querySelector('.addTitle').innerText === 'Website') {
+        let hashMessage = document.querySelector('.pass').value;
+        let hashMessage2 = document.querySelector('.confirmPass').value;
 
-                let newPass = document.createElement('li');
-                newPass.innerHTML = `
-                <h5>${yourName}</h5>
-                <div class="expandPassLine"></div>
-                <div class="expandPass">Click to view</div>
-                `;
-                if (addToFavorite.classList.contains('fas')) {
-                    let tempPass = document.createElement('li');
-                    tempPass.innerHTML = `
+        hash(hashMessage).then((result) => {
+            hash(hashMessage2).then((result1) => {
+                if (result === result1) {
+                    
+                    let yourName = document.getElementById('inputName').value;
+                    
+                    const fav = document.getElementById('favList');
+                    const all = document.getElementById('allList');
+
+                    let newPass = document.createElement('li');
+                    newPass.innerHTML = `
                     <h5>${yourName}</h5>
                     <div class="expandPassLine"></div>
                     <div class="expandPass">Click to view</div>
                     `;
-                    newPass.classList.add(`${yourName}`);
-                    tempPass.classList.add(`${yourName}`);
-                    fav.appendChild(newPass);
-                    all.appendChild(tempPass);
+                    if (addToFavorite.classList.contains('fas')) {
+                        let tempPass = document.createElement('li');
+                        tempPass.innerHTML = `
+                        <h5>${yourName}</h5>
+                        <div class="expandPassLine"></div>
+                        <div class="expandPass">Click to view</div>
+                        `;
+                        newPass.classList.add(`${yourName}`);
+                        tempPass.classList.add(`${yourName}`);
+                        fav.appendChild(newPass);
+                        all.appendChild(tempPass);
+                    } else {
+                        newPass.classList.add(`${yourName}`);
+                        // console.log(newPass.className);
+                        all.appendChild(newPass);
+                    }
+                    if (addToFavorite.classList.contains('fas')) {
+                        addToFavorite.classList.toggle('far');
+                        addToFavorite.classList.toggle('fas');
+                    }
+                    document.querySelector('.name').value = '';
+                    document.querySelector('.user').value = '';
+                    document.querySelector('.email').value = '';
+                    document.querySelector('.pass').value = '';
+                    document.querySelector('.confirmPass').value = '';
+
+                    let notMatching = document.querySelector('.unMatching');
+                    notMatching.parentNode.removeChild(notMatching);
                 } else {
-                    newPass.classList.add(`${yourName}`);
-                    console.log(newPass.className);
-                    all.appendChild(newPass);
+                    unmatchingPass();
                 }
-                if (addToFavorite.classList.contains('fas')) {
-                    addToFavorite.classList.toggle('far');
-                    addToFavorite.classList.toggle('fas');
-                }
-                document.querySelector('.name').value = '';
-                document.querySelector('.user').value = '';
-                document.querySelector('.email').value = '';
-                document.querySelector('.pass').value = '';
-                document.querySelector('.confirmPass').value = '';
-                document.querySelector('.unMatching').style.display = 'none';
-            }
-            unmatchingPass()
-            return;
-        })
-    })
+                return;
+            })
+        });
+    } else {
+        let yourName = document.getElementById('inputName').value;
+        
+        const fav = document.getElementById('favList');
+        const all = document.getElementById('allList');
+
+        let newPass = document.createElement('li');
+        newPass.innerHTML = `
+        <h5>${yourName}</h5>
+        <div class="expandPassLine"></div>
+        <div class="expandPass">Click to view</div>
+        `;
+        if (addToFavorite.classList.contains('fas')) {
+            let tempPass = document.createElement('li');
+            tempPass.innerHTML = `
+            <h5>${yourName}</h5>
+            <div class="expandPassLine"></div>
+            <div class="expandPass">Click to view</div>
+            `;
+            newPass.classList.add(`${yourName}`);
+            tempPass.classList.add(`${yourName}`);
+            fav.appendChild(newPass);
+            all.appendChild(tempPass);
+        } else {
+            newPass.classList.add(`${yourName}`);
+            console.log(newPass.className);
+            all.appendChild(newPass);
+        }
+        if (addToFavorite.classList.contains('fas')) {
+            addToFavorite.classList.toggle('far');
+            addToFavorite.classList.toggle('fas');
+        }
+        document.querySelector('.name').value = '';
+        document.querySelector('.user').value = '';
+        document.querySelector('.email').value = '';
+        document.querySelector('.pass').value = '';
+        document.querySelector('.confirmPass').value = '';
+        return;
+    }
 });
 
 const fav = document.getElementById('favList');
 const all = document.getElementById('allList');
 
-
 function unmatchingPass() {
-    if (1 == 1) {
+    if (document.querySelector('.unMatching') == null) {
         let notMatching = document.createElement('div');
         notMatching.classList.add('unMatching');
         notMatching.innerHTML = "Passwords aren't matching!";
         document.querySelector('.notMatching').appendChild(notMatching);
     }
 }
-
-
-    
-
-
-
 
 
 // User profile sliding 
@@ -233,7 +270,7 @@ const userBlock = document.querySelector('.userBlock');
 const signOut = document.getElementById('signOut');
 
 tabLook.addEventListener('click', () => {
-    userBlock.classList.toggle('userSlide');
+    userBlock.classList.toggle('userActive');
 });
 
 signOut.addEventListener('click', () => {
@@ -249,17 +286,39 @@ const proInfo = document.getElementById('proInfo');
 const addTitle = document.querySelector('.addTitle');
 const dropDownEl1 = document.querySelector('.dropDownEl1');    
 const dropDownEl2 = document.querySelector('.dropDownEl2');    
-const dropDownEl3 = document.querySelector('.dropDownEl3');    
+
 
 dropDownEl1.addEventListener('click', () => {
     addTitle.innerHTML = dropDownEl1.innerHTML;
+    document.getElementsByName('name')[0].placeholder = 'Website Name*';
+    document.getElementsByName('name')[0].required = true;
+    document.getElementsByName('user')[0].placeholder = 'Username';
+    document.getElementsByName('user')[0].required = false;
+    document.getElementsByName('email')[0].placeholder = 'Email';
+    document.getElementsByName('email')[0].type = 'email';
+    document.getElementsByName('email')[0].required = false;
+    document.getElementsByName('pass')[0].placeholder = 'Password*';
+    document.getElementsByName('pass')[0].type = 'text';
+    document.getElementsByName('pass')[0].required = true;
+    document.getElementsByName('confirmPass')[0].placeholder = 'Confirm Password*';
+    document.getElementsByName('confirmPass')[0].required = true;
 });
 dropDownEl2.addEventListener('click', () => {
     addTitle.innerHTML = dropDownEl2.innerHTML;
+    document.getElementsByName('name')[0].placeholder = 'Card/Store Name*';
+    document.getElementsByName('name')[0].required = true;
+    document.getElementsByName('user')[0].placeholder = 'Name Indicated on Card';
+    document.getElementsByName('user')[0].required = false;
+    document.getElementsByName('email')[0].placeholder = 'Card Number*';
+    document.getElementsByName('email')[0].type = 'text';
+    document.getElementsByName('email')[0].required = true;
+    document.getElementsByName('pass')[0].placeholder = 'Expiration Date (dd/mm/yyyy)';
+    document.getElementsByName('pass')[0].type = 'date';
+    document.getElementsByName('pass')[0].required = false;
+    document.getElementsByName('confirmPass')[0].placeholder = 'CVV';
+    document.getElementsByName('confirmPass')[0].required = false;
 });
-dropDownEl3.addEventListener('click', () => {
-    addTitle.innerHTML = dropDownEl3.innerHTML;
-});
+
 
 
 
