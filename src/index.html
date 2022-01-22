@@ -20,6 +20,34 @@
         </div>
     </header>
     <div class="mainSection">
+        <div class="settings">
+            <div class="openProfile">
+                <i class="fas fa-user-alt"></i>
+            </div>
+            <div class="closeProfile">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="userMain">
+                <div class="userMainContent">
+                    <div class="generalItem">
+                        <div class="accountName noSelect" contenteditable="true">[Name will be here]</div>
+                        <div class="line"></div>
+                        <div class="accountEmail noSelect" contenteditable="true">[Email will be displayed here]</div>
+                    </div>
+                    <div class="profileCustomizer noSelect">
+                        <div class="changeFontColor">Font Color:
+                            <div>
+                                <input type="color" id="changeFontColor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userMainBox noSelect" id="signOut">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <p>Sign out</p>
+                    </div>                        
+                </div>
+            </div>
+        </div>
         <div class="passContainer">
 
             <div class="favPassContainer">
@@ -28,16 +56,7 @@
                         Favorites
                         <i class="fas fa-sort sortBtn"></i>
                     </div>
-                    <div class="favPassCon">
-                        <div class="favPassAdd noSelect" id="favPassAdd">
-                            <i class="fas fa-plus"></i>
-                            <h4>Add</h4>
-                            <ul class="dropDown">
-                                <li class='dropDownEl1 noSelect'>Website</li>
-                                <li class='dropDownEl2 noSelect'>Card Information</li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                     </div>
                 <div class="favPassList">
                     <ul class="favPasses passList" id="favList">
@@ -58,17 +77,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="userBlock">
-                <div class="tabLook">
-                    <div class="userProfile">
-                        <i class="fas fa-user-alt"></i>
-                    </div>
-                </div>
-                
-            </div>
         </div>
     </div>
     <form onsubmit="return false" class="addSection">
+        <div class="favPassCon">
+            <div class="favPassAdd noSelect" id="favPassAdd">
+                <i class="fas fa-plus"></i>
+                <ul class="dropDown">
+                    <li class='dropDownEl1 noSelect'>Website</li>
+                    <li class='dropDownEl2 noSelect'>Card Information</li>
+                </ul>
+            </div>
+        </div>
         <div class="titleBox">
             <div class="addTitle noSelect">
                 Website
@@ -99,7 +119,7 @@
         </div>
         <div class="enterPassBox inputField websiteForm">
             <div class="tempDiv">
-                <i class="far fa-eye-slash eyeDisplay eye"></i>
+                <i class="far fa-eye-slash eyeDisplay eye" name="eyeDisplay"></i>
                 <div>
                     <input name="pass" placeholder="Password*" class="inputTitle pass" type="password" required>
                 </div>
@@ -107,7 +127,7 @@
         </div>
         <div class="enterConfirmBox inputField websiteForm">
             <div class="tempDiv notMatching">
-                <i class="far fa-eye-slash eyeDisplayC eye"></i>
+                <i class="far fa-eye-slash eyeDisplayC eye" name="eyeDisplayC"></i>
                 <div>
                     <input name="confirmPass" placeholder="Confirm Password*" class="inputTitle confirmPass" type="password" required>
                 </div>
@@ -122,45 +142,5 @@
             </button>
         </div>
     </form>
-</body>name="name" 
+</body> 
 </html>
-
-
-<!-- <div class="userHeader noSelect">
-    Settings
-</div>
-<div class="userMain">
-    <div class="userMainContent">
-        <div class="saveInfo">
-            <i class="far fa-save"></i>
-        </div>
-        <div class="generalItem">
-            <div class="about">
-                <div class="profileCircle">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="accountName noSelect" contenteditable="true">[Name will be here]</div>
-                <div class="line"></div>
-                <div class="accountEmail noSelect" contenteditable="true">[Email will be displayed here]</div>
-            </div>
-        </div>
-        <div class="profileCustomizer noSelect">
-            <div class="changeThemes">Change theme
-                <div>
-                    <input type="button" value="Light">
-                    <input type="button" value="Dark">
-                    <input type="button" value="Programmers">
-                </div>
-            </div>
-            <div class="changeFontColor">Font Color
-                <div>
-                    <input type="color" id="changeFontColor">
-                </div>
-            </div>
-        </div>
-        <div class="userMainBox noSelect" id="signOut">
-            <i class="fas fa-sign-out-alt"></i>
-            <p>Sign out</p>
-        </div>                        
-    </div>
-</div> -->

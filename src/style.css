@@ -51,7 +51,7 @@ body {
   font-family: "Poppins", sans-serif;
   display: flex;
   /* background-color: var(--main-bg-color); */
-  background-image: url('https://images.unsplash.com/photo-1641149747386-09ffbbc17be8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0MTk5Mzg0NA&ixlib=rb-1.2.1&q=80&w=1600');
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFuZHNjYXBlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
   /* background-color: white; */
   background-size: cover;
   flex-direction: row;
@@ -71,8 +71,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background: -webkit-linear-gradient(to right, rgba(50, 50, 50, 0.65), rgba(50, 50, 50, 0.5));
-  background: linear-gradient(to right, rgba(50, 50, 50, 0.65), rgba(50, 50, 50, 0.5)); */
+  z-index: 10;
 }
 .frameBtn {
   width: fit-content;
@@ -179,57 +178,78 @@ header {
   transition: all .3s cubic-bezier(.44,-0.43,.41,1.57);
 }
 .favPassCon {
-  margin: 1rem;
-  padding: 0rem 0.5rem;
+  align-self: flex-start;
   cursor: pointer;
   position: relative;
-  right: 2rem;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
 .favPassAdd {
-  width: 7rem;
-  height: 3rem;
-  border: 3px solid var(--main-font-color);
-  border-radius: 5px;
+  width: 10rem;
+  height: 10rem;
+  border: 2px solid var(--main-font-color);
+  border-radius: 50%;
+  position: absolute;
+  top: -5rem;
+  left: -5rem;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-end;
+  justify-content: flex-end;
   padding: 0.5rem;
   font-size: 1.5rem;
   background: rgba(0, 0, 0, 0.1);
+  transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-app-region: no-drag;
+  z-index: 11;
 }
 .favPassAdd > i {
-  margin: 0.25rem;
-  padding: 0.25rem;
-}
-.dropDown {
   position: absolute;
-  top: 1.75rem;
-  right: 0.5rem;
-  width: 10rem;
-  border-radius: 7px;
-  padding: 0.5rem;
-  display: none;
-  background: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 5px 1px var(--main-font-color);
+  margin: 1rem;
+  font-size: 2.5rem;
+  transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
+}
+
+.dropDown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -100%;
 }
 .dropDown > li {
   width: 100%;
-  height: 100%;
+  height: 40%;
   border-radius: 5px;
-  background: none;
+  background: transparent;
   padding: 0.5rem;
   text-align: center;
+  z-index: 100;
 }
 .dropDown > li:hover {
   background: rgba(0, 0, 0, 0.25);
 }
-.favPassAdd:hover .dropDown,
-.dropDown:hover {
-  display: block;
+.favPassAdd:hover {
+  top: -5px;
+  left: -5px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+.favPassAdd:hover > i {
+  top: 0;
+  left: 0;
+  margin: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
+}
+.favPassAdd:hover > .dropDown,
+.dropDown:hover,
+.dropDown > li:hover,
+.favPassAdd > i:hover {
+  top: 1rem;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
 }
 
 
@@ -395,6 +415,7 @@ li {
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  overflow-x: hidden;
 }
 ::-webkit-file-upload-button {
   cursor: pointer;
@@ -540,6 +561,7 @@ li {
   top: 50%;
   cursor: pointer;
   z-index: 1;
+  display: block;
 }
 
 #addToFavorite {
@@ -559,81 +581,174 @@ li {
   text-align: center;
 }
 
-.tabLook {
-  width: 100px;
-  height: 100px;
-  border-radius: 0 0 0 100px;
-  -moz-border-radius: 0 0 0 100px;
-  -webkit-border-radius: 0 0 0 100px;
+.settings {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
   position: absolute;
-  top: -15%;
-  right: 100%;
-  border: 2px solid var(--main-font-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: -5rem;
+  right: -5rem;
+  border: 2px solid black;
   cursor: pointer;
   transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  z-index: 11;
 }
-.tabLook:hover {
-  box-shadow: 0 0 5px 2px var(--main-font-color);
+.settings:hover {
+  transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  box-shadow: 0 0 3px 2px black;
 }
-.tabLook > div {
-  font-size: 2.5rem;
-  margin-left: 1.5rem;
-  margin-bottom: .5rem;
-  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+
+
+
+
+
+
+.closeProfile {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  font-size: 2rem;
+  transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
-.userActive > .tabLook {
-  height: 100%;
+.openProfile {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  font-size: 2rem;
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-radius: 50%;
+}
+.openProfile > i {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 1.75rem;
+}
+
+.userActive {
+  width: 35%;
+  height: 70%;
   border-radius: 10px;
-  width: 200%;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  border: 3px solid black;
+  cursor: pointer;
+  transition: all 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  backdrop-filter: blur(7px);
+  z-index: 10;
+  cursor: default;
 }
-.userActive > .tabLook > .userProfile {
+.userActive > .openProfile {
+  position: absolute;
   bottom: 0;
   left: 0;
-  margin-left: 0.5rem;
-}
-
-.userBlock {
-  background: rgba(0, 0, 0, 0.2);
-  border: 3px solid var(--main-font-color);
-  min-width: 500px;
-  max-width: 700px;
-  height: 80%;
-  position: absolute;
-  top: 7rem;
-  left: 100%;
-  border-radius: 0 10px 10px 10px;
-  z-index: 10000;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0rem;
+  height: 0rem;
+  width: 0rem;
+  font-size: 2rem;
+  cursor: default;
   display: flex;
-  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.userActive > .closeProfile {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.userActive > .closeProfile > i {
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  font-size: 2rem;
+  cursor: pointer;
+}
+.userActive > .closeProfile:hover > i {
+  transform: rotate(360deg);
 }
 
-.userHeader {
+.userMain {
+  display: none;
+}
+
+
+.userActive > .userHeader {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: calc(5.5rem + 3px);
   border-bottom: 3px solid var(--main-font-color);
-  display: flex;
+  display: hidden;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
 }
 
-.userMain {
-  margin: auto;
-  padding: 0.5rem;
+
+.userActive > .userMain {
   height: 100%;
-  width: 575px;
-  border-radius: 7px;
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+  background: blueviolet;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  padding-top: 4rem;
 }
+.userActive > .userMain .userMainContent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.userActive > .userMain > .userMainContent > .generalItem {
+  background: blue;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+}
+.userActive > .userMain > .userMainContent > .generalItem > div {
+  margin: 0.25rem;
+}
+.userActive > .userMain > .userMainContent > .generalItem > .line {
+  border-bottom: 2px solid black;
+  width: 80%;
+}
+.userActive > .userMain > .userMainContent > .profileCustomizer {
+  height: 60%;
+  width: 100%;
+  background: red;
+}
+.userActive > .userMain > .userMainContent > .userMainBox {
+  height: 20%;
+  width: 100%;
+  background: blue;
+}
+
+/*
 .userMainContent {
   padding: 0.5rem;
   height: 100%;
@@ -642,11 +757,6 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.generalItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .about {
   width: 75%;
@@ -683,15 +793,6 @@ li {
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
 }
-.saveInfo {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0.5rem;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
-}
 .saveInfo:hover {
   transform: scale(1.1);
 }
@@ -710,40 +811,6 @@ li {
 }
 .profileCustomizer > div {
   margin: 0.75rem;
-}
-
-.profileCircle {
-  height: 7rem;
-  width: 7rem;
-  border: 3px solid var(--main-font-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
-
-.changeThemes {
-  height: 2rem;
-  font-size: 1.5rem;
-  outline: none;
-  border-radius: 7px;
-  cursor: default;
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.changeThemes > div > input {
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.1);
-  font-size: 1.25rem;
-}
-.changeThemes > div > input:hover {
-  background: rgba(0, 0, 0, 0.2);
 }
 .changeFontColor {
   height: 2rem;
@@ -768,4 +835,4 @@ li {
 }
 .changeFontColor > div > input:hover {
   background: rgba(0, 0, 0, 0.2);
-}
+} */

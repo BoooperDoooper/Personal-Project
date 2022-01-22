@@ -264,18 +264,23 @@ function unmatchingPass() {
 
 // User profile sliding 
 
-const tabLook = document.querySelector('.tabLook');
+const settings = document.querySelector('.settings');
+const closeProfile = document.querySelector('.closeProfile');
+const openProfile = document.querySelector('.openProfile');
 const mainSection = document.querySelector('.mainSection');
-const userBlock = document.querySelector('.userBlock');
 const signOut = document.getElementById('signOut');
 
-tabLook.addEventListener('click', () => {
-    userBlock.classList.toggle('userActive');
+closeProfile.addEventListener('click', () => {
+    settings.classList.remove('userActive');
 });
 
-signOut.addEventListener('click', () => {
-    ipcRenderer.send('userSignOut');
+openProfile.addEventListener('click', () => {
+    settings.classList.add('userActive');
 });
+
+// signOut.addEventListener('click', () => {
+//     ipcRenderer.send('userSignOut');
+// });
 
 const proInfo = document.getElementById('proInfo');
 
@@ -291,32 +296,56 @@ const dropDownEl2 = document.querySelector('.dropDownEl2');
 dropDownEl1.addEventListener('click', () => {
     addTitle.innerHTML = dropDownEl1.innerHTML;
     document.getElementsByName('name')[0].placeholder = 'Website Name*';
+    document.getElementsByName('name')[0].value = '';
     document.getElementsByName('name')[0].required = true;
-    document.getElementsByName('user')[0].placeholder = 'Username';
+    document.getElementsByName('user')[0].placeholder = 'UserName';
+    document.getElementsByName('user')[0].value = '';
     document.getElementsByName('user')[0].required = false;
     document.getElementsByName('email')[0].placeholder = 'Email';
+    document.getElementsByName('email')[0].value = '';
     document.getElementsByName('email')[0].type = 'email';
     document.getElementsByName('email')[0].required = false;
     document.getElementsByName('pass')[0].placeholder = 'Password*';
+    document.getElementsByName('pass')[0].value = '';
     document.getElementsByName('pass')[0].type = 'text';
     document.getElementsByName('pass')[0].required = true;
     document.getElementsByName('confirmPass')[0].placeholder = 'Confirm Password*';
+    document.getElementsByName('confirmPass')[0].value = '';
     document.getElementsByName('confirmPass')[0].required = true;
+    document.getElementsByName('confirmPass')[0].type = 'password';
+    document.getElementsByName('eyeDisplay')[0].style.display = 'block';
+    document.getElementsByName('eyeDisplay')[0].style.pointerEvents = 'all';
+    document.getElementsByName('eyeDisplay')[0].classList.toggle('fa-eye-splash');
+    document.getElementsByName('eyeDisplayC')[0].classList.toggle('fa-eye-splash');
+    document.getElementsByName('eyeDisplayC')[0].style.display = 'block';
+    document.getElementsByName('eyeDisplayC')[0].style.pointerEvents = 'all';
 });
 dropDownEl2.addEventListener('click', () => {
     addTitle.innerHTML = dropDownEl2.innerHTML;
     document.getElementsByName('name')[0].placeholder = 'Card/Store Name*';
+    document.getElementsByName('name')[0].value = '';
     document.getElementsByName('name')[0].required = true;
     document.getElementsByName('user')[0].placeholder = 'Name Indicated on Card';
+    document.getElementsByName('user')[0].value = '';
     document.getElementsByName('user')[0].required = false;
     document.getElementsByName('email')[0].placeholder = 'Card Number*';
+    document.getElementsByName('email')[0].value = '';
     document.getElementsByName('email')[0].type = 'text';
     document.getElementsByName('email')[0].required = true;
-    document.getElementsByName('pass')[0].placeholder = 'Expiration Date (dd/mm/yyyy)';
     document.getElementsByName('pass')[0].type = 'date';
+    document.getElementsByName('pass')[0].placeholder = '';
+    document.getElementsByName('pass')[0].value = '';
     document.getElementsByName('pass')[0].required = false;
     document.getElementsByName('confirmPass')[0].placeholder = 'CVV';
+    document.getElementsByName('confirmPass')[0].value = '';
     document.getElementsByName('confirmPass')[0].required = false;
+    document.getElementsByName('confirmPass')[0].type = 'text';
+    document.getElementsByName('eyeDisplay')[0].style.display = 'hidden';
+    document.getElementsByName('eyeDisplay')[0].style.pointerEvents = 'none';
+    document.getElementsByName('eyeDisplayC')[0].style.display = 'hidden';
+    document.getElementsByName('eyeDisplayC')[0].style.pointerEvents = 'none';
+    document.getElementsByName('eyeDisplay')[0].classList.toggle('fa-eye-splash');
+    document.getElementsByName('eyeDisplayC')[0].classList.toggle('fa-eye-splash');
 });
 
 
